@@ -16,29 +16,29 @@ $result = mysqli_query($mysqli, "SELECT * FROM products WHERE login_id=".$_SESSI
 
 <html>
 <head>
-	<title>Homepage</title>
+	<title>Halaman Utama</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a> | <a href="add.html">Add New Data</a> | <a href="logout.php">Logout</a>
+	<a href="index.php">Halaman Utama</a> | <a href="add.html">Tambah Data</a> | <a href="logout.php">Log Keluar</a>
 	<br/><br/>
-	
+
 	<table width='80%' border=0>
 		<tr bgcolor='#CCCCCC'>
-			<td>Name</td>
-			<td>Quantity</td>
-			<td>Price (euro)</td>
-			<td>Update</td>
+			<td>Nama</td>
+			<td>Kuantiti</td>
+			<td>Harga (RM)</td>
+			<td>Kemaskini</td>
 		</tr>
 		<?php
-		while($res = mysqli_fetch_array($result)) {		
+		while($res = mysqli_fetch_array($result)) {
 			echo "<tr>";
 			echo "<td>".$res['name']."</td>";
 			echo "<td>".$res['qty']."</td>";
-			echo "<td>".$res['price']."</td>";	
-			echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";		
+			echo "<td>".$res['price']."</td>";
+			echo "<td><a href=\"edit.php?id=$res[id]\">Kemaskini</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Anda pasti untuk padam data ini?')\">Hapus</a></td>";
 		}
 		?>
-	</table>	
+	</table>
 </body>
 </html>

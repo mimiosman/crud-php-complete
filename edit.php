@@ -11,31 +11,31 @@ if(!isset($_SESSION['valid'])) {
 include_once("connection.php");
 
 if(isset($_POST['update']))
-{	
+{
 	$id = $_POST['id'];
-	
+
 	$name = $_POST['name'];
 	$qty = $_POST['qty'];
-	$price = $_POST['price'];	
-	
+	$price = $_POST['price'];
+
 	// checking empty fields
 	if(empty($name) || empty($qty) || empty($price)) {
-				
+
 		if(empty($name)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
+			echo "<font color='red'>Ruang nama kosong.</font><br/>";
 		}
-		
+
 		if(empty($qty)) {
-			echo "<font color='red'>Quantity field is empty.</font><br/>";
+			echo "<font color='red'>Ruang kuntiti kosong.</font><br/>";
 		}
-		
+
 		if(empty($price)) {
-			echo "<font color='red'>Price field is empty.</font><br/>";
-		}		
-	} else {	
+			echo "<font color='red'>Ruang harga kosong.</font><br/>";
+		}
+	} else {
 		//updating the table
 		$result = mysqli_query($mysqli, "UPDATE products SET name='$name', qty='$qty', price='$price' WHERE id=$id");
-		
+
 		//redirectig to the display page. In our case, it is view.php
 		header("Location: view.php");
 	}
@@ -56,31 +56,31 @@ while($res = mysqli_fetch_array($result))
 }
 ?>
 <html>
-<head>	
+<head>
 	<title>Edit Data</title>
 </head>
 
 <body>
-	<a href="index.php">Home</a> | <a href="view.php">View Products</a> | <a href="logout.php">Logout</a>
+	<a href="index.php">Halaman Utama</a> | <a href="view.php">Papar Data</a> | <a href="logout.php">Log Keluar</a>
 	<br/><br/>
-	
+
 	<form name="form1" method="post" action="edit.php">
 		<table border="0">
-			<tr> 
-				<td>Name</td>
+			<tr>
+				<td>Nama</td>
 				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
 			</tr>
-			<tr> 
-				<td>Quantity</td>
+			<tr>
+				<td>Kuantiti</td>
 				<td><input type="text" name="qty" value="<?php echo $qty;?>"></td>
 			</tr>
-			<tr> 
-				<td>Price</td>
+			<tr>
+				<td>Harga (RM)</td>
 				<td><input type="text" name="price" value="<?php echo $price;?>"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
+				<td><input type="submit" name="update" value="Kemaskini"></td>
 			</tr>
 		</table>
 	</form>
